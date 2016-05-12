@@ -63,6 +63,8 @@ public class FeatureLoader {
     }
 
     private String findFeature(String feature) {
+        System.err.println("findFeature " + feature);
+
         final String currentDirectory = context.getNativePlatform().getPosix().getcwd();
 
         if (feature.startsWith("./")) {
@@ -90,6 +92,8 @@ public class FeatureLoader {
     }
 
     private String findFeatureWithAndWithoutExtension(String path) {
+        System.err.println("findFeatureWithAndWithoutExtension " + path);
+
         final String asCExt = findFeatureWithExactPath(path + RubyLanguage.CEXT_EXTENSION);
 
         if (asCExt != null) {
@@ -112,6 +116,8 @@ public class FeatureLoader {
     }
 
     private String findFeatureWithExactPath(String path) {
+        System.err.println("findFeatureWithExactPath " + path);
+
         if (path.startsWith(SourceLoader.TRUFFLE_SCHEME) || path.startsWith(SourceLoader.JRUBY_SCHEME)) {
             return path;
         }
@@ -119,6 +125,7 @@ public class FeatureLoader {
         final File file = new File(path);
 
         if (!file.isFile()) {
+            System.err.println("not a file " + path);
             return null;
         }
 
