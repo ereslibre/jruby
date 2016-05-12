@@ -51,3 +51,5 @@ SRC.each do |src|
 end
 
 mx 'su-link', '-o', OUT, *LL
+
+puts `file #{OUT}`
